@@ -1,0 +1,6 @@
+requests
+gunicorn
+cheroot
+flask
+flask-restful
+bs4
