@@ -90,11 +90,11 @@ def extractArtistArticles(slug):
     else:
         return jsonify({"message": "Ok", "status": 1, "description": resp})
 
-
-
-# fetch articles
 @app.route('/')
 def index():
-    return "heelo"
+   return "REST API"
+
+
+app.run(debug=True)
 
 
