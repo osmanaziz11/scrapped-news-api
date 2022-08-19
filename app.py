@@ -91,4 +91,10 @@ def extractArtistArticles(slug):
         return jsonify({"message": "Ok", "status": 1, "description": resp})
 
 
-app.run(debug=True)
+
+# fetch articles
+@app.route('/')
+def index():
+    return "heelo"
+
+
