@@ -19,28 +19,30 @@ def getHTMLContent():
        return 0
 
 def getLinks():
-    posts=[]
-    soup=getHTMLContent()
-    if soup != 0:
-        mainDiv = soup.find("div", {"id": "tdi_59"})
-        for content in mainDiv.find_all("div", class_="tdb_module_loop"):
-            para = content.find("p", class_="entry-title")
-            anchor = para.findNext()
+   try:
+       posts = []
+       soup = getHTMLContent()
+       if soup != 0:
+           mainDiv = soup.find("div", {"id": "tdi_59"})
+           for content in mainDiv.find_all("div", class_="tdb_module_loop"):
+               para = content.find("p", class_="entry-title")
+               anchor = para.findNext()
 
-            Link = anchor['href']
-            date = content.find("time", class_="entry-date")
-            thumbnail = content.find("span", class_="entry-thumb")['style'][22:-1]
+               Link = anchor['href']
+               date = content.find("time", class_="entry-date")
+               thumbnail = content.find("span", class_="entry-thumb")['style'][22:-1]
 
-            dict = \
-                {
-                    "title": "Not Available" if anchor == "None" else anchor.text,
-                    "articleLink": Link,
-                    "publishedAt": "Not available" if date == "None" else date.text,
-                    "thumbnail": "Not available" if thumbnail == "None" else thumbnail,
-                }
-            posts.append(dict)
+               dict = \
+                   {
+                       "title": "Not Available" if anchor == "None" else anchor.text,
+                       "articleLink": Link,
+                       "publishedAt": "Not available" if date == "None" else date.text,
+                       "thumbnail": "Not available" if thumbnail == "None" else thumbnail,
+                   }
+               posts.append(dict)
 
-    return posts
-
+       return posts
+   except:
+       return 0
 def SportsNews():
     return getLinks()

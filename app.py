@@ -95,6 +95,6 @@ def index():
    return "REST API"
 
 
-#app.run(debug=True)
+app.run(debug=True)
 
 
